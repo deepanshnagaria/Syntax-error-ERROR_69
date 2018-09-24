@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deepansh's Store</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style type="text/css">
+		form{
+			padding: 10px;
+			padding-top: 50px;
+		}
+		body{
+			color: white;
+			background-color: #4682b4;
+		}
+		small{
+			color: white;
+			text-decoration: underline;
+		}
+		.no{
+			display: none;
+		}
+		.removed{
+
+		}
+		#underline{
+			color: white;
+			text-decoration: underline;
+		}
+		button{
+			padding-left: 5px;
+			margin-left: 8px;
+			margin-top: 8px;
+		}
+	</style>
+</head>
+<body>
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">DEEPANSH'S STORE</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active active">
+	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/subCategories">SubCategories</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/features">Features</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/requests">Requests</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/complaints">Complaints</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/users">User-Info</a>
+	      </li>
+	    </ul>
+	    <ul class="navbar-nav ml-auto">
+	    	
+	    		<li class="nav-item active">
+	      			<a class="nav-link" href="/login">Login</a>
+	    		</li>
+    		
+	    		<li class="nav-item active">
+	      			<a class="nav-link" href="/logout">Logout</a>
+	    		</li>
+	    		
+    	</ul>
+	  </div>
+	</nav>
+	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<div>
+		<div class="container">
+			<form action="/subCategories/<%=subCategory._id%>/edit?_method=PUT" method="POST">
+			  <legend>EDIT SUB-CATEGORY</legend>
+			  <div class="form-group">
+			    <label for="category">Name</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Sub-Category" name="name" value="<%=subCategory.name%>">
+			  </div>
+			  <h3>Sub-SubCategories:</h3>
+			  <%for(var i=1;i<=subCategory.subCategories.length;i++){%>
+			  	<div class="<%=subCategory.subCategories[i-1]._id%>">
+			  		<%=i%>. <%=subCategory.subCategories[i-1].name%> <a href="/subSubCategories/<%=subCategory.subCategories[i-1]._id%>/edit"><button type="button" class="btn btn-primary" value="<%=subCategory.subCategories[i-1]._id%>">Edit</button></a><a href="#"><button type="button" class="btn btn-danger" value="<%=subCategory.subCategories[i-1]._id%>">Remove</button></a>
+			  	</div>
+			  	<p class="no" id="<%=subCategory.subCategories[i-1]._id%>"><%=subCategory.subCategories[i-1]._id%></p>
+			  <%}%>
+			  <div class="form-group no">
+			    <label for="removed">Removed</label>
+			    <input type="text" class="form-control" id="removed" aria-describedby="emailHelp" placeholder="Category" name="removed">
+			  </div>
+			  <span id="repeat">
+			  <div class="form-group" >
+			    <label for="category" >Add Sub-SubCategory</label>
+			    <select name="subCategory[]" class="form-control" id="subCategorySelected">
+			    		<option value="none">
+			    			Pick a sub-sub-category!
+			    		</option>
+			    		<% for(var i=0;i<subSubCategories.length;i++){ %>
+			    			<option value="<%=subSubCategories[i]._id%>">
+			    				<%=subSubCategories[i].name %>
+			    			</option>
+			    		<% }%>
+			    </select>
+			  </div>
+			  </span>
+			  <a class="btn btn-primary addmore" id="sub">Add more subSubCategories..</a>
+			  <a id="underline" href="/subSubCategories/new" >Create new subSubCategory?(not in the list)</a>
+			  <br>
+			  <br>
+			  <input type="submit" class="btn btn-primary"></input>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/editSubCategory.js"></script>
+</body>
+</html>
+

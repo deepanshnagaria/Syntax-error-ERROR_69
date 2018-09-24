@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deepansh's Store</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style type="text/css">
+		form{
+			padding: 10px;
+			padding-top: 50px;
+		}
+		body{
+			color: white;
+			background-color: #4682b4;
+		}
+		small{
+			color: white;
+			text-decoration: underline;
+		}
+		.no{
+			display: none;
+		}
+		.removed{
+
+		}
+		#underline{
+			color: white;
+			text-decoration: underline;
+		}
+		button{
+			padding-left: 5px;
+			margin-left: 8px;
+			margin-top: 8px;
+		}
+		.deco{
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">DEEPANSH'S STORE</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active active">
+	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/subCategories">SubCategories</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/features">Features</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/requests">Requests</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/complaints">Complaints</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/users">User-Info</a>
+	      </li>
+	    </ul>
+	    <ul class="navbar-nav ml-auto">
+	    	
+	    		<li class="nav-item active">
+	      			<a class="nav-link" href="/login">Login</a>
+	    		</li>
+    		
+	    		<li class="nav-item active">
+	      			<a class="nav-link" href="/logout">Logout</a>
+	    		</li>
+	    		
+    	</ul>
+	  </div>
+	</nav>
+	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<div>
+		<div class="container">
+			<form action="/features/<%=feature._id%>/edit?_method=PUT" method="POST">
+			  <legend>EDIT FEATURE</legend>
+			  <div class="form-group">
+			    <label for="category">Name</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Feature" name="name" value="<%=feature.name%>">
+			  </div>
+			  <div class="form-group" >
+			    <label for="category" >Display Options</label>
+			    <select name="display" class="form-control" id="Display">
+			    		<option value="none">
+			    			Pick a display!
+			    		</option>
+			    		<option value="1">
+			    			Checkbox
+			    		</option>
+			    		<option value="2">
+			    			Radio-Buttons
+			    		</option>
+			    </select>
+			  </div>
+			  <h3>Options already available:</h3>
+			  <%for(var i=1;i<=feature.options.length;i++){%>
+			  	<div><%=i%>.)      <input type="text" name="option[]" value="  <%=feature.options[i-1]%>" class="deco"></div>
+			  	<br>
+			  <%}%>
+			  <span id="repeat">
+			  <div class="form-group" >
+			    <label for="category" >Add Options</label>
+			    <input type="text" name="option[]" placeholder="  option" aria-describedby="emailHelp" class="deco">
+			  </div>
+			  </span>
+			  <a class="btn btn-primary addmore" id="sub">Add more options..</a>
+			  <br>
+			  <br>
+			  <input type="submit" class="btn btn-primary"></input>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/editSubCategory.js"></script>
+</body>
+</html>
+
