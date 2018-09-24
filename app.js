@@ -31,6 +31,17 @@ passport.use(new LocalStrategy(User.authenticate()));
 //								Databases
 //								 Schemas
 /*******************************************************************************************************/
+var paymentSchema=new mongoose.Schema({
+	accountID:String,
+	localRate:Number,
+	townRate:Number,
+	stateBased:Number,
+	countryBased:Number,
+	internationalBased:Number
+})
+var Payment=mongoose.model("Payment",paymentSchema);
+
+
 var featureSchema=new mongoose.Schema({
 	name:String,
 	options:[{type:String}],
@@ -110,6 +121,14 @@ Feature.create({
 /********************************************************************************************/
 //									Routes
 //									basic
+/*Payment.create({
+	accountID:"",
+	localRate:2,
+	townRate:3,
+	stateBased:4,
+	countryBased:7,
+	internationalBased:10
+});*/
 
 app.get("/root",function(req,res){
 	res.render("rootadmin");
@@ -119,7 +138,17 @@ app.get("/",function(req,res){
 	res.redirect("/root");
 });
 
+app.get("/payment",function(req,res){
+	Payment.findOne({},function(err,payment){
+		res.render("payments",{payment:payment});
+	})
+})
 
+app.put("/rates/:_id/edit",function(req,res){
+	Payment.findByIdAndUpdate(req.params._id,req.body.payment,function(err,f){
+		res.redirect("/root");
+	})
+})
 /*--------------------------------------------------------------------------*/
 /*                      CATEGORY RELATED                                    */
 /*--------------------------------------------------------------------------*/
@@ -289,6 +318,7 @@ app.get("/subSubCategories/new",function(req,res){
 	res.render("newSubSubCategory");
 });
 
+
 app.post("/newSubSubCategory",function(req,res){
 	SubSubCategory.create({
 		name:req.body.subSubCategory
@@ -298,6 +328,7 @@ app.post("/newSubSubCategory",function(req,res){
 
 });
 
+
 app.get("/subSubCategories/:_id/edit",function(req,res){
 	SubSubCategory.findById(req.params._id).populate("features").exec(function(err,subCategory){
 		Feature.find({},function(req,features){
@@ -305,6 +336,7 @@ app.get("/subSubCategories/:_id/edit",function(req,res){
 	})
 	})
 })
+
 
 app.put("/subSubCategories/:_id/edit",function(req,res){
 	var a1,b1;
@@ -360,9 +392,11 @@ app.get("/features",function(req,res){
 	})
 })
 
+
 app.get("/features/new",function(req,res){
 	res.render("newFeature");
 });
+
 
 app.post("/newFeature",function(req,res){
 	Feature.create({
@@ -372,11 +406,13 @@ app.post("/newFeature",function(req,res){
 	});
 });
 
+
 app.get("/features/:_id/edit",function(req,res){
 	Feature.findById(req.params._id,function(err,feature){
 		res.render("editFeature",{feature:feature})
 	})
 })
+
 
 app.put("/features/:_id/edit",function(req,res){
 	var a1,b1;
@@ -399,27 +435,33 @@ app.put("/features/:_id/edit",function(req,res){
 	})
 })
 
+
 app.get("/features/:_id/delete",function(req,res){
 	Feature.findByIdAndRemove(req.params._id,function(err){
 		res.redirect("/features");
 	})
 });
 
+
 /*--------------------------------------------------------------*/
 /*--------------------------------------------------------------*/
 /*------------------OTHER UTILITIES-----------------------------*/
+
 
 app.get("/requests",function(req,res){
 	res.render("requests");
 });
 
+
 app.get("/complaints",function(req,res){
 	res.render("complaints");
 })
 
+
 app.get("/users",function(req,res){
 	res.render("users");
 });
+
 
 /*app.listen("3000",function(){
 	console.log("Running");
