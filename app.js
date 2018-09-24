@@ -421,6 +421,10 @@ app.get("/users",function(req,res){
 	res.render("users");
 });
 
-app.listen("3000",function(){
+/*app.listen("3000",function(){
+	console.log("Running");
+});*/
+
+app.listen(process.env.PORT,process.env.IP,function(){
 	console.log("Running");
 });
