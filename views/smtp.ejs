@@ -5,25 +5,35 @@
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
+		form{
+			padding: 10px;
+			padding-top: 50px;
+		}
 		body{
-			background-color: #4682B4;
-		}
-		h1{
-			padding: auto;
-			text-align: center;
 			color: white;
-			font-weight: normal;
-			padding-top: 150px;
-			font-size: 75px;
+			background-color: #4682b4;
 		}
-		/*button{
-			float: left;
-			color: #4682b4;
-			background-color: white;
-			height: 25px;
-		}*/
-		.yo{
-			text-align: center;
+		small{
+			color: white;
+			text-decoration: underline;
+		}
+		.no{
+			display: none;
+		}
+		.removed{
+
+		}
+		#underline{
+			color: white;
+			text-decoration: underline;
+		}
+		button{
+			padding-left: 5px;
+			margin-left: 8px;
+			margin-top: 8px;
+		}
+		.deco{
+			border-radius: 5px;
 		}
 	</style>
 </head>
@@ -57,7 +67,7 @@
 	        <a class="nav-link" href="/complaints">Complaints</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/newProduct">New product</a>
+	        <a class="nav-link" href="/newProduct">New Product</a>
 	      </li>
 	      <li class="nav-item active active">
 	        <a class="nav-link" href="/payment">Commision-Rates</a>
@@ -76,22 +86,26 @@
     	</ul>
 	  </div>
 	</nav>
-	<h1 >Products (level 1)</h1>
-	<br>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
-	<div class="yo">
-		<%for(var i=1;i<=categories.length;i++){%>
-			<div>
-				<h3>
-					<%=i%>. <%=categories[i-1].name%> <a href="/categories/<%=categories[i-1]._id%>/edit"><button type="button" class="btn btn-dark">Edit</button></a> <a href="/categories/<%=categories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a> 
-				</h3>
-			</div>
-		<%}%>
-		<br>
-		<div>
-			<a href="/categories/new" class="btn btn-primary" role="button">Create New Category</a>
+	<div>
+		<div class="container">
+			<form action="/smtp/<%=smtp._id%>/edit?_method=PUT" method="POST">
+			  <legend>SMTP INFO</legend>
+			  <div class="form-group">
+			    <label for="category">Mailing-address:</label>
+			    <input type="email" class="form-control" id="category" aria-describedby="emailHelp" placeholder="mail" name="smtp[mail]" value="<%=smtp.mail%>">
+			  </div>
+			  <div class="form-group">
+			    <label for="category50">API key:</label>
+			    <input type="text" class="form-control" id="category50" aria-describedby="emailHelp" placeholder="Key" name="smtp[key]" value="<%=smtp.key%>">
+			  </div>
+			  <div class="form-group">
+			    <label for="category51">API Secret:</label>
+			    <input type="text" class="form-control" id="category51" aria-describedby="emailHelp" placeholder="Secret" name="smtp[secret]" value="<%=smtp.secret%>">
+			  </div>
+			  <br>
+			  <input type="submit" class="btn btn-primary"></input>
+			</form>
 		</div>
 	</div>
 </body>
 </html>
-

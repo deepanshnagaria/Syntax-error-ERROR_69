@@ -22,8 +22,16 @@
 			background-color: white;
 			height: 25px;
 		}*/
+		button{
+			margin-left: 5px;
+		}
 		.yo{
 			text-align: center;
+		}
+		.ye{
+			text-align: center;
+			padding: auto;
+			color: white;
 		}
 	</style>
 </head>
@@ -76,22 +84,23 @@
     	</ul>
 	  </div>
 	</nav>
-	<h1 >Products (level 1)</h1>
+	<div class="container">
+	<h1 >WHAT ARE YOU WILLING TO DO?</h1>
 	<br>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<br>
 	<div class="yo">
-		<%for(var i=1;i<=categories.length;i++){%>
-			<div>
-				<h3>
-					<%=i%>. <%=categories[i-1].name%> <a href="/categories/<%=categories[i-1]._id%>/edit"><button type="button" class="btn btn-dark">Edit</button></a> <a href="/categories/<%=categories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a> 
-				</h3>
-			</div>
-		<%}%>
-		<br>
-		<div>
-			<a href="/categories/new" class="btn btn-primary" role="button">Create New Category</a>
-		</div>
+		<a href="/categories"><button class="btn btn-primary">EDIT PRODUCTS</button></a>
 	</div>
+	<div class="ye">
+		<small >click on edit button of the corresponding product.</small>
+	</div>
+	<br>
+	<div class="yo">
+		<a href="/newProducts"><button class="btn btn-primary">CREATE NEW PRODUCTS</button></a>
+	</div>
+	<br>
+	
+	
+	<!-- <script type="text/javascript" src="/js/new.js"></script> -->
 </body>
 </html>
-

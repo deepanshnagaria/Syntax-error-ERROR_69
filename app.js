@@ -3,6 +3,7 @@ var app=e();
 Schema=mongoose.Schema;
 var passport= require("passport"),LocalStrategy= require("passport-local"),passportLocalMongoose= require("passport-local-mongoose");
 var User= require("./models/user");
+var async = require("async");
 
 mongoose.connect("mongodb://ketan:deepansh15@ds213183.mlab.com:13183/final_app", { useNewUrlParser: true });
 app.set("view engine","ejs");
@@ -33,6 +34,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 /*******************************************************************************************************/
 var paymentSchema=new mongoose.Schema({
 	accountID:String,
+	mode:String,
+	accountSecret:String,
 	localRate:Number,
 	townRate:Number,
 	stateBased:Number,
@@ -41,6 +44,15 @@ var paymentSchema=new mongoose.Schema({
 })
 var Payment=mongoose.model("Payment",paymentSchema);
 
+var complaintSchema=new mongoose.Schema({
+	user:String,
+	description:String,
+	date:{
+		type:Date,
+		default: Date.now
+	}
+});
+var Complaint=mongoose.model("Complaint",complaintSchema);
 
 var featureSchema=new mongoose.Schema({
 	name:String,
@@ -72,6 +84,13 @@ var subCategorySchema=new mongoose.Schema({
 });
 var SubCategory=mongoose.model("SubCategory",subCategorySchema);
 
+var smtp=new mongoose.Schema({
+	mail:String,
+	key:String,
+	secret:String
+});
+var SMTP=mongoose.model("SMTP",smtp);
+
 var categorySchema=new mongoose.Schema({
 	name:String,
 	subCategories:[
@@ -83,7 +102,36 @@ var categorySchema=new mongoose.Schema({
 });
 var Category=mongoose.model("Category",categorySchema);
 
+var requestSchema=new mongoose.Schema({
+	category:String,
+	subCategory:String,
+	subSubCategory:String,
+	features:String,
+	options:[{type:String}],
+	description:String,
+	user:String
+})
+var Request=mongoose.model("Request",requestSchema);
 
+Request.create({
+	category:"Electrcian",
+	subCategory:"Power-Supply",
+	subSubCategory:"Repairs",
+	features:"Fuses",
+	options:["1","2"],
+	description:"Repairing of main power supply",
+	user:"Deepansh"
+})
+Complaint.create({
+	user:"Deepansh",
+	description:"It is hardcoded."
+});
+
+/*SMTP.create({
+	mail:"deepanshnagaria@gmail.com",
+	key:"iDontKnow",
+	secret:"noIdea"
+});*/
 
 /*Category.create({
 	name:"Toys"
@@ -123,6 +171,8 @@ Feature.create({
 //									basic
 /*Payment.create({
 	accountID:"",
+	accountSecret:"Deepansh",
+	mode:"visa",
 	localRate:2,
 	townRate:3,
 	stateBased:4,
@@ -142,10 +192,22 @@ app.get("/payment",function(req,res){
 	Payment.findOne({},function(err,payment){
 		res.render("payments",{payment:payment});
 	})
+});
+
+app.get("/smtp",function(req,res){
+	SMTP.findOne({},function(err,smtp){
+		res.render("smtp",{smtp:smtp});
+	})
 })
 
 app.put("/rates/:_id/edit",function(req,res){
 	Payment.findByIdAndUpdate(req.params._id,req.body.payment,function(err,f){
+		res.redirect("/root");
+	})
+})
+
+app.put("/smtp/:_id/edit",function(req,res){
+	SMTP.findByIdAndUpdate(req.params._id,req.body.smtp,function(err,f){
 		res.redirect("/root");
 	})
 })
@@ -392,6 +454,156 @@ app.get("/features",function(req,res){
 	})
 })
 
+app.get("/newProduct",function(req,res){
+	res.render("question");
+})
+
+app.get("/newProducts",function(req,res){
+	res.render("newProduct");
+})
+
+app.post("/newProduct",function(req,res){
+	
+	var id;
+	/*Category.create({
+		name:req.body.category
+	},function(err,category){
+			SubCategory.create({
+				name:req.body.subcategory
+			},function(err,sub){
+				var sum=0;
+				var id;
+
+				for(var i=0;i<req.body.subsubcategory.length;i++)
+				{
+					console.log(i);
+					async.series([
+						SubSubCategory.create({
+							name:req.body.subsubcategory[i]
+						},function(err,subsub){
+							console.log("********************");
+							console.log(i);
+							for(var j=sum;j<sum+req.body.num[i];j++)
+							{
+								Feature.create({
+									name:req.body.feature[j],
+									options:req.body.answer[j].split(",")
+								},function(err,feature){
+									var ing=subsub.features;
+									ing.push(feature);
+									SubSubCategory.findByIdAndUpdate(subsub._id,{
+										name:subsub.name,
+										features:ing
+									},function(err,k){});
+									id=subsub._id;
+								})
+							}
+							sum=sum+req.body.num[i];
+							var dec=sub.subCategories;
+							dec.push(subsub);
+							SubCategory.findByIdAndUpdate(sub._id,{
+								name:category.name,
+								subCategories:dec
+							},function(err,s){});
+						})
+					]);
+				}
+				var po=category.subCategories;
+				po.push(sub);
+				Category.findByIdAndUpdate(category._id,{
+					name:category.name,
+					subCategories:po
+				},function(req,res){});
+			})
+			console.log(category);
+	})*/
+	async.waterfall([
+		function(callback){
+			Category.create({
+			name:req.body.category
+		},function(err,category){
+			callback(null,category);
+		});
+		},
+		/*function(category,callback){
+			var list=[]
+			for(var i=0;i<5;i++){
+				list.push(i);
+		}
+		async.forEachOf(list,
+		function(key,callback){
+			console.log(category);
+		});
+			
+		}*/
+		function(category,callback){
+			SubCategory.create({
+				name:req.body.subcategory
+			},function(err,sub){callback(null,category,sub)});
+		},
+
+		function(category,sub,callback){
+			var sum=0;
+			var id;
+			var list=[];
+			for(var i=0;i<req.body.subsubcategory.length;i++)
+				{
+					list.push(i);
+				}
+			async.forEachOf(list,function(key,callback){
+				SubSubCategory.create({
+							name:req.body.subsubcategory[Number(key)]
+						},function(err,subsub){
+						
+							for(var j=sum;j<sum+Number(req.body.num[Number(key)]);j++)
+							{
+								Feature.create({
+									name:req.body.feature[j],
+									options:req.body.answer[j].split(",")
+								},function(err,feature){
+									var ing=subsub.features;
+									ing.push(feature);
+									SubSubCategory.findByIdAndUpdate(subsub._id,{
+										name:subsub.name,
+										features:ing
+									},function(err,k){});
+									id=subsub._id;
+								})
+							}
+							sum=sum+Number(req.body.num[Number(key)]);
+							var dec=sub.subCategories;
+							dec.push(subsub);
+							SubCategory.findByIdAndUpdate(sub._id,{
+								name:sub.name,
+								subCategories:dec
+							},function(err,s){});
+						})
+			})
+			callback(null,category,sub);
+		},
+
+		function(category,sub,callback){
+			var po=category.subCategories;
+				po.push(sub);
+				Category.findByIdAndUpdate(category._id,{
+					name:category.name,
+					subCategories:po
+				},function(req,res){});
+		}
+	]);
+	res.redirect("/categories");
+})
+
+/*async.waterfall([
+	function(callback){
+		Category.create({
+		name:req.body.category
+	},callback(null,category,err));
+	}
+	function(err,category,callback){
+		console.log(category);
+	}
+])*/
 
 app.get("/features/new",function(req,res){
 	res.render("newFeature");
@@ -449,13 +661,56 @@ app.get("/features/:_id/delete",function(req,res){
 
 
 app.get("/requests",function(req,res){
-	res.render("requests");
+	Request.find({},function(err,requests){
+		res.render("requests",{requests:requests});
+	})
 });
 
+app.get("/requests/:_id/create",function(req,res){
+	Request.findById(req.params._id,function(err,request){
+		res.render("approve",{request:request});
+	})
+})
+
+app.post("/request",function(req,res){
+	Feature.create({
+		features:req.body.feature,
+		options:req.body.options.split(",")
+	},function(err,f){
+		SubSubCategory.create({
+			name:req.body.subsubcategory,
+			features:f
+		},function(err,ssc){
+			SubCategory.create({
+				name:req.body.subcategory,
+				subCategories:ssc
+			},function(err,sc){
+				Category.create({
+					name:req.body.category,
+					subCategories:sc
+				},function(req,res){});
+			})
+		})
+	})
+	res.redirect("/categories");
+})
+
+app.get("/requests/:_id/delete",function(req,res){
+	Request.findOneAndDelete(req.body._id,function(err){});
+	res.redirect("/requests");
+})
+
+app.get("/complaints/:_id/delete",function(req,res){
+	Complaint.findOneAndDelete(req.params._id,function(req,res){});
+	res.redirect("/complaints");
+})
 
 app.get("/complaints",function(req,res){
-	res.render("complaints");
-})
+	Complaint.find({},function(err,complaints){
+		
+		res.render("complaints",{complaints:complaints});
+	})
+});
 
 
 app.get("/users",function(req,res){

@@ -7,13 +7,14 @@
 	<style type="text/css">
 		body{
 			background-color: #4682B4;
+			color: white;
 		}
-		h3{
+		h1{
 			padding: auto;
 			text-align: center;
 			color: white;
 			font-weight: normal;
-			padding-top: 150px;
+			padding-top: 50px;
 			font-size: 75px;
 		}
 		/*button{
@@ -22,8 +23,12 @@
 			background-color: white;
 			height: 25px;
 		}*/
-		.yo{
-			text-align: center;
+		.big{
+			font-size: 25px;
+			padding-left: 350px;
+		}
+		.ye{
+			padding-left: 30px;
 		}
 	</style>
 </head>
@@ -39,7 +44,7 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/subCategories">SubCategories</a>
@@ -57,7 +62,7 @@
 	        <a class="nav-link" href="/complaints">Complaints</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/users">User-Info</a>
+	        <a class="nav-link" href="/newProduct">New products</a>
 	      </li>
 	      <li class="nav-item active active">
 	        <a class="nav-link" href="/payment">Commision-Rates</a>
@@ -76,8 +81,45 @@
     	</ul>
 	  </div>
 	</nav>
-	<h3> Requests for introduction of new categories/subCategories/features will be available here.</h3>
+	<h1 >Requests</h1>
+	<br>
 	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
-	
+	<div class="yo">
+		<%for(var i=1;i<=requests.length;i++){%>
+			<div class="big">
+				
+					 
+				<p>
+					<%=i%>).
+					User: <%=requests[i-1].user%>
+					<div class="ye">
+						Description: <%=requests[i-1].description%>
+					</div>
+					
+					
+					<div class="ye">
+						Product: <%=requests[i-1].category%>
+					</div>
+					<div class="ye">
+						Category: <%=requests[i-1].subCategory%>
+					</div>
+					<div class="ye">
+						SubCategory: <%=requests[i-1].subSubCategory%>
+					</div>
+					<div class="ye">
+						Features: <%=requests[i-1].features%>
+					</div>
+					<div class="ye">
+						Options: <%=requests[i-1].options%>
+					</div>
+				</p>
+				<div class="ye">
+					<a href="/requests/<%=requests[i-1]._id%>/create" class="btn btn-primary" role="button">Accept</a>
+					<a href="/requests/<%=requests[i-1]._id%>/delete" class="btn btn-danger" role="button">Delete</a>
+					
+				</div>
+			</div>
+		<%}%>
+	</div>
 </body>
 </html>

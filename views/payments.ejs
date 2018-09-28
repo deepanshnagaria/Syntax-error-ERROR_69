@@ -49,7 +49,7 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/subCategories">SubCategories</a>
@@ -67,7 +67,7 @@
 	        <a class="nav-link" href="/complaints">Complaints</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/users">User-Info</a>
+	        <a class="nav-link" href="/newProduct">New products</a>
 	      </li>
 	      <li class="nav-item active active">
 	        <a class="nav-link" href="/payment">Commision-Rates</a>
@@ -92,9 +92,19 @@
 			<form action="/rates/<%=payment._id%>/edit?_method=PUT" method="POST">
 			  <legend>PERSONAL INFO</legend>
 			  <div class="form-group">
-			    <label for="category">Account ID(Paypal):</label>
-			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="ID" name="payment[accountID]" value="<%=payment.accountID%>">
+			    <label for="category">Mode</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Mode" name="payment[mode]" value="<%=payment.mode%>">
 			  </div>
+			  <div class="form-group">
+			    <label for="category50">Client ID(Paypal):</label>
+			    <input type="text" class="form-control" id="category50" aria-describedby="emailHelp" placeholder="ID" name="payment[accountID]" value="<%=payment.accountID%>">
+			  </div>
+			  <div class="form-group">
+			    <label for="category51">Client Secret(Paypal):</label>
+			    <input type="text" class="form-control" id="category51" aria-describedby="emailHelp" placeholder="Secret" name="payment[accountSecret]" value="<%=payment.accountSecret%>">
+			  </div>
+			  <br>
+			  <br>
 			  <h3>COMMISION RATES(in percentages):</h3>
 			  <div class="form-group">
 			    <label for="category1">Localised Visibility:</label>

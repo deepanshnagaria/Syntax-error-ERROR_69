@@ -25,6 +25,13 @@
 		.yo{
 			text-align: center;
 		}
+		.white{
+			color: white;
+			text-decoration: underline;
+		}
+		.blank{
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -76,22 +83,39 @@
     	</ul>
 	  </div>
 	</nav>
-	<h1 >Products (level 1)</h1>
-	<br>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
-	<div class="yo">
-		<%for(var i=1;i<=categories.length;i++){%>
-			<div>
-				<h3>
-					<%=i%>. <%=categories[i-1].name%> <a href="/categories/<%=categories[i-1]._id%>/edit"><button type="button" class="btn btn-dark">Edit</button></a> <a href="/categories/<%=categories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a> 
-				</h3>
-			</div>
-		<%}%>
+	<div>
 		<br>
-		<div>
-			<a href="/categories/new" class="btn btn-primary" role="button">Create New Category</a>
+		<br>
+		<div class="container">
+			<form action="/request" method="POST">
+			  <legend>DESCRIBE YOUR PRODUCT</legend>
+			  <div class="form-group">
+			    <label for="category" >Name:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Name" name="category" value="<%=request.category%>">
+			  </div>
+			  
+				  <div class="form-group" >
+				    <label for="category1" >Category:</label>
+				    <input type="text" class="form-control" id="category1" aria-describedby="emailHelp" placeholder="Name" name="subcategory" value="<%=request.subCategory%>">
+				  </div>
+			   <div class="form-group" >
+				    <label for="category1" >Sub-Category:</label>
+				    <input type="text" class="form-control" id="category1" aria-describedby="emailHelp" placeholder="Name" name="subsubcategory" value="<%=request.subSubCategory%>">
+				</div>
+				<div class="form-group" >
+				    <label for="category1" >Feature:</label>
+				    <input type="text" class="form-control" id="category1" aria-describedby="emailHelp" placeholder="Name" name="feature" value="<%=request.features%>">
+				</div>
+			    <div class="form-group" >
+				    <label for="category1" >Options:</label>
+				    <input type="text" class="form-control" id="category1" aria-describedby="emailHelp" placeholder="Name" name="options" value="<%=request.options%>">
+				</div>
+			  
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
 		</div>
 	</div>
+	<script type="text/javascript" src="/js/newProducts.js"></script>
+	
 </body>
 </html>
-
