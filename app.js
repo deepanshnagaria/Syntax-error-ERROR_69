@@ -113,7 +113,7 @@ var requestSchema=new mongoose.Schema({
 })
 var Request=mongoose.model("Request",requestSchema);
 
-Request.create({
+/*Request.create({
 	category:"Electrcian",
 	subCategory:"Power-Supply",
 	subSubCategory:"Repairs",
@@ -125,7 +125,7 @@ Request.create({
 Complaint.create({
 	user:"Deepansh",
 	description:"It is hardcoded."
-});
+});*/
 
 /*SMTP.create({
 	mail:"deepanshnagaria@gmail.com",
