@@ -22,6 +22,9 @@
 			background-color: white;
 			height: 25px;
 		}*/
+		button{
+			margin-left: 5px;
+		}
 		.yo{
 			text-align: center;
 		}
@@ -32,32 +35,32 @@
 
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="/">DEEPANSH'S STORE</a>
+	  <a class="navbar-brand" href="/spareroom/">DEEPANSH'S STORE</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/spareroom/categories">Products <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subCategories">SubCategories</a>
+	        <a class="nav-link" href="/spareroom/subCategories">SubCategories</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
+	        <a class="nav-link" href="/spareroom/subSubCategories">SubSubCategories</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/features">Features</a>
+	        <a class="nav-link" href="/spareroom/features">Features</a>
 	      </li>
+	      <!-- <li class="nav-item active">
+	        <a class="nav-link" href="/spareroom/requests">Requests</a>
+	      </li> -->
+	      <!-- <li class="nav-item active">
+	        <a class="nav-link" href="/spareroom/complaints">Complaints</a>
+	      </li> -->
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/requests">Requests</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/complaints">Complaints</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/newProduct">New products</a>
+	        <a class="nav-link" href="/spareroom/newProduct">New product</a>
 	      </li>
 	      <li class="nav-item active active">
 	        <a class="nav-link" href="/payment">Commision-Rates</a>
@@ -79,22 +82,22 @@
     	</ul>
 	  </div>
 	</nav>
-	<h1 >Sub-SubCategories (level-3)</h1>
+	<h1 >Welcome to the Deepansh's Store</h1>
 	<br>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<!-- <a class="btn btn-primary" href="/spareroom/new_blog" role="button">Create new blog</a> -->
 	<div class="yo">
-		<%for(var i=1;i<=subSubCategories.length;i++){%>
-			<div>
-				<h3>
-					<%=i%>. <%=subSubCategories[i-1].name%> <a href="/subSubCategories/<%=subSubCategories[i-1]._id%>/edit"><button type="button" class="btn btn-dark">Edit</button></a> <a href="/subSubCategories/<%=subSubCategories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a> 
-				</h3>
-			</div>
-		<%}%>
-		<br>
-		<div>
-			<a href="/subSubCategories/new" class="btn btn-primary" role="button">Create New SubSubCategory</a>
-		</div>
+		<a href="/spareroom/categories"><button class="btn">View Products</button></a>
+		<a href="/spareroom/services"><button class="btn">View Services</button></a>
+		<!-- <a href="/spareroom/subCategories"><button class="btn">View SubCategories</button></a>
+		<a href="/spareroom/subSubCategories"><button class="btn">View SubSubCategories</button></a> -->
+	</div>
+	<br>
+	<div class="yo">
+		<a href="/spareroom/subCategories"><button class="btn">View SubCategories</button></a>
+		<a href="/spareroom/subSubCategories"><button class="btn">View SubSubCategories</button></a>
+		<a href="/complaints"><button class="btn">View complaints</button></a>
+		<!-- <a href="/spareroom/requests"><button class="btn">View requests</button></a> -->
+		<!-- <a href="/spareroom/users"><button class="btn">View Users</button></a> -->
 	</div>
 </body>
 </html>
-

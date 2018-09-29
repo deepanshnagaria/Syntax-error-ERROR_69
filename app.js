@@ -60,6 +60,7 @@ var featureSchema=new mongoose.Schema({
 	selected:String
 })
 var Feature=mongoose.model("Feature",featureSchema);
+/*var Feature1=mongoose.model("Feature",featureSchema);*/
 
 
 var subSubCategorySchema=new mongoose.Schema({
@@ -70,6 +71,7 @@ var subSubCategorySchema=new mongoose.Schema({
 	}]
 });
 var SubSubCategory=mongoose.model("SubSubCategory",subSubCategorySchema);
+var SubSubCategory1=mongoose.model("SubSubCategory",subSubCategorySchema);
 
 
 
@@ -83,6 +85,7 @@ var subCategorySchema=new mongoose.Schema({
 	]
 });
 var SubCategory=mongoose.model("SubCategory",subCategorySchema);
+/*var SubCategory1=mongoose.model("SubCategory",subCategorySchema);*/
 
 var smtp=new mongoose.Schema({
 	mail:String,
@@ -101,6 +104,8 @@ var categorySchema=new mongoose.Schema({
 	]
 });
 var Category=mongoose.model("Category",categorySchema);
+/*var Product=mongoose.model("Category",categorySchema);
+var Service=mongoose.model("Category",categorySchema);*/
 
 var requestSchema=new mongoose.Schema({
 	category:String,
@@ -180,12 +185,17 @@ Feature.create({
 	internationalBased:10
 });*/
 
-app.get("/root",function(req,res){
+app.get("/rootadmin",function(req,res){
 	res.render("rootadmin");
 });
 
+/*app.get("/spareroom",function(req,res){
+	res.render("spareroom");
+});*/
+
 app.get("/",function(req,res){
-	res.redirect("/root");
+	/*res.render("basic");*/
+	res.redirect("/rootadmin");
 });
 
 app.get("/payment",function(req,res){
@@ -225,6 +235,18 @@ app.get("/categories",function(req,res){
 app.get("/categories/new",function(req,res){
 	res.render("newCategory");
 })
+
+/*app.get("/spareroom/categories",function(req,res){
+	Category.find({},function(err,categories){
+		if(!err){
+			res.render("categories",{categories:categories});
+		}
+	})
+});
+
+app.get("/spareroom/categories/new",function(req,res){
+	res.render("newCategory");
+})*/
 
 app.post("/newCategory",function(req,res){
 	Category.create({
@@ -718,10 +740,10 @@ app.get("/users",function(req,res){
 });
 
 
-/*app.listen("3000",function(){
-	console.log("Running");
-});*/
-
-app.listen(process.env.PORT,process.env.IP,function(){
+app.listen("3000",function(){
 	console.log("Running");
 });
+
+/*app.listen(process.env.PORT,process.env.IP,function(){
+	console.log("Running");
+});*/
