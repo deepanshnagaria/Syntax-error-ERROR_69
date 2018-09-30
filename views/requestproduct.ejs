@@ -2,14 +2,20 @@
 <html>
 <head>
 	<title>WebStore</title> 	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
-	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		body{
-			background-color: #ffffff;
+			background-color: #4682B4;
 		}
-		
+		h1{
+			padding: auto;
+			text-align: center;
+			color: white;
+			font-weight: normal;
+			padding-top: 150px;
+			font-size: 75px;
+		}
 		/*button{
 			float: left;
 			color: #4682b4;
@@ -40,28 +46,13 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Products<span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/seller/sell">Sell stuff<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subCategories">SubCategories</a>
+	        <a class="nav-link" href="/seller/complaint">Report Problem</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/features">Features</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/requests">Requests</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/complaints">Complaints</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/newProduct">New product</a>
-	      </li>
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/payment">Commision-Rates</a>
+	        <a class="nav-link" href="/seller/request">Request Product</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">
@@ -81,25 +72,25 @@
 		<br>
 		<br>
 		<div class="container">
-			<form action="/newProduct" method="POST">
+			<form action="/seller/request" method="POST">
 			  <legend>DESCRIBE YOUR PRODUCT</legend>
 			  <div class="form-group">
-			    <label for="category" >Name:</label>
-			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Name" name="category" >
+			    <label for="category" >Username:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Name" name="name" >
+			  </div>
+			  <div class="form-group">
+			    <label for="category" >Category:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Category" name="category" >
 			  </div>
 			  
 				  <div class="form-group" >
 				    <label for="category1" >Sub-Category:</label>
-				    <input type="text" class="form-control" id="category1" aria-describedby="emailHelp" placeholder="Name" name="subcategory" >
+				    <input type="text" class="form-control" id="category1" aria-describedby="emailHelp" placeholder="Sub-Category" name="subcategory" >
 				  </div>
-			   
-			  
-			  <br>
-			  <p class="white">Note:Features are linked to sub-subcategories</p>
-			  <span id="subsub">
+			  		
 					  <div class="form-group" >
-					    <label for="category2" >Sub-SubCategories:</label>
-					    <input type="text" class="form-control" id="category2" aria-describedby="emailHelp" placeholder="Name" name="subsubcategory[]" >
+					    <label for="category2" >Sub-SubCategory:</label>
+					    <input type="text" class="form-control" id="category2" aria-describedby="emailHelp" placeholder="Sub-SubCategory" name="subsubcategory" >
 					  </div>
 				  <span id="fo">
 					  <div class="form-group">
@@ -116,19 +107,18 @@
 						</div>
 					  </div>
 				  </span>
-				  <a href="#" class="thisone"><small id="emailHelp" class="form-text white">Add feature...</small></a>
-				  <div class="form-group blank" >
-					    <label for="category5" >Number</label>
-					    <input type="number" class="form-control" id="category5" aria-describedby="emailHelp" placeholder="Name" name="num[]" value="1" >
-				   </div>
-			  </span>
-			  <a href="#" id="addsubsub"><small id="emailHelp" class="form-text white">Add Sub-Subcategory...</small></a>
+				  <div class="form-group">
+				    <label for="category" >Description:</label>
+				    <textarea class="form-control" id="category" placeholder="Description" name="description"></textarea> 
+			  	</div>
+				  
+			  
 			  <br>
 			  <button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="/js/newProducts.js"></script>
+	<script type="text/javascript" src="/js/.js"></script>
 	
 </body>
 </html>

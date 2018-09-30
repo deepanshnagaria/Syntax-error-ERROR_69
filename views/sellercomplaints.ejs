@@ -6,9 +6,9 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		body{
-			background-color: #4682B4;
+			background-color: #ffffff;
 		}
-		h3{
+		h1{
 			padding: auto;
 			text-align: center;
 			color: white;
@@ -28,9 +28,6 @@
 	</style>
 </head>
 <body>
-
-
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="/"><img style="height:25px; padding:0; margin:0" src="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico"> WebStore</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,28 +36,13 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/seller/sell">Sell stuff<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subCategories">SubCategories</a>
+	        <a class="nav-link" href="/seller/complaint">Report Problem</a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/features">Features</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/requests">Requests</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/complaints">Complaints</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/newProduct">New product</a>
-	      </li>
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/payment">Commision-Rates</a>
+	        <a class="nav-link" href="/seller/request">Request Product</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">
@@ -76,7 +58,24 @@
     	</ul>
 	  </div>
 	</nav>
-	<h3> User-Info will be available after sinking of users unit.</h3>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<br>
+	<br>
+	<div>
+		<div class="container">
+			<form action="/seller/complaint" method="POST">
+			  <legend>REPORT A PROBLEM</legend>
+			  <div class="form-group">
+			    <label for="category">Username:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Name" name="name" >
+			  </div>
+			  <div class="form-group">
+			    <label for="category">Description:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Description" name="description" >
+			  </div>
+			  <br>
+			  <button type="submit" class="btn btn-primary">Proceed</button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

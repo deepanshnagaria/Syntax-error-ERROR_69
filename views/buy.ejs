@@ -2,19 +2,21 @@
 <html>
 <head>
 	<title>WebStore</title> 	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
+	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		body{
-			background-color: #4682B4;
+			background-color: #ffffff;
 		}
-		h3{
+		h1{
 			padding: auto;
 			text-align: center;
-			color: white;
+			color: #000000;
 			font-weight: normal;
-			padding-top: 150px;
+			padding-top: 70px;
 			font-size: 75px;
+			font-family: serif;
 		}
 		/*button{
 			float: left;
@@ -22,7 +24,10 @@
 			background-color: white;
 			height: 25px;
 		}*/
-		.yo{
+		button{
+			margin-left: 5px;
+		}
+		.row{
 			text-align: center;
 		}
 	</style>
@@ -38,29 +43,11 @@
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
+	      <li class="nav-item active ">
+	        <a class="nav-link" href="/buyer/buy">Buy stuff<span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/subCategories">SubCategories</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/features">Features</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/requests">Requests</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/complaints">Complaints</a>
-	      </li>
-	      <li class="nav-item active">
-	        <a class="nav-link" href="/newProduct">New product</a>
-	      </li>
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/payment">Commision-Rates</a>
+	      <li class="nav-item ">
+	        <a class="nav-link" href="/buyer/complaint">Report problem</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">
@@ -69,14 +56,23 @@
 	      			<a class="nav-link" href="/login">Login</a>
 	    		</li>
     		
-	    		<li class="nav-item active">
+	    		<li class="nav-item ">
 	      			<a class="nav-link" href="/logout">Logout</a>
 	    		</li>
 	    		
     	</ul>
 	  </div>
 	</nav>
-	<h3> User-Info will be available after sinking of users unit.</h3>
+	<h1 >Welcome to the WebStore</h1>
+	<br>
 	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<div class="row">
+	<div class="col"><a href="/buyer/buy"><img src="https://www.brandcrowd.com/maker/asset/logo/55ec8c0d-02a1-41f5-aea7-e4db9907c924/image/logo?text=Buy%20A%20Product&v=2" alt="Buy A Product"></a>
+	</div>
+	
+	<div class="col"><a href="/buyer/complaint"><img src="https://www.brandcrowd.com/maker/asset/logo/62382ca8-2cc6-44a6-aad0-0844ac224f99/image/logo?text=Report%20A%20Complaint&v=2" alt="Report A Complaint"></a></div>
+	
+</div>
 </body>
 </html>
+

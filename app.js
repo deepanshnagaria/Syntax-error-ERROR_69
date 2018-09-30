@@ -5,7 +5,7 @@ var passport= require("passport"),LocalStrategy= require("passport-local"),passp
 var User= require("./models/user");
 var async = require("async");
 
-mongoose.connect("mongodb://ketan:deepansh15@ds213183.mlab.com:13183/final_app", { useNewUrlParser: true });
+mongoose.connect("mongodb://Deepansh:Ketan15@ds139970.mlab.com:39970/deepansh", { useNewUrlParser: true });
 app.set("view engine","ejs");
 app.use(e.static("public"));
 app.use(bodyparser.urlencoded({extended:true}));
@@ -44,6 +44,28 @@ var paymentSchema=new mongoose.Schema({
 })
 var Payment=mongoose.model("Payment",paymentSchema);
 
+var productSchema=new mongoose.Schema({
+	name:String,
+	category:String,
+	subcategory:String,
+	subsubcategory:String,
+	image:String,
+	price:Number,
+	feature:[{type:String}],
+	value:[{type:String}]
+})
+var Product=mongoose.model("Product",productSchema);
+/*Product.create({
+	name:"Acer Nito 5",
+	category:"Electronics",
+	subcategory:"Laptops",
+	subsubcategory:"Gaming",
+	image:"https://images-na.ssl-images-amazon.com/images/I/41zDsd2AuqL.jpg",
+	price:89999,
+	feature:["RAM","Graphic card","ROM","Display","SSD"],
+	value:["16 GB","Nvidia 1050 Ti","1 TB", "1080px","128 GB"]
+})*/
+
 var complaintSchema=new mongoose.Schema({
 	user:String,
 	description:String,
@@ -71,7 +93,7 @@ var subSubCategorySchema=new mongoose.Schema({
 	}]
 });
 var SubSubCategory=mongoose.model("SubSubCategory",subSubCategorySchema);
-var SubSubCategory1=mongoose.model("SubSubCategory",subSubCategorySchema);
+/*var SubSubCategory1=mongoose.model("SubSubCategory",subSubCategorySchema);*/
 
 
 
@@ -126,8 +148,8 @@ var Request=mongoose.model("Request",requestSchema);
 	options:["1","2"],
 	description:"Repairing of main power supply",
 	user:"Deepansh"
-})
-Complaint.create({
+})*/
+/*Complaint.create({
 	user:"Deepansh",
 	description:"It is hardcoded."
 });*/
@@ -193,9 +215,128 @@ app.get("/rootadmin",function(req,res){
 	res.render("spareroom");
 });*/
 
+app.get("/buyer",function(req,res){
+	res.render("buy");
+});
+
+app.get("/buyer/buy",function(req,res){
+	Category.find({}).populate("subCategories").exec(function(err,categories){
+		res.render("choose",{categories:categories});
+	})
+})
+
+app.post("/buyer/products",function(req,res){
+	Category.findById(req.body.category,function(err,category){
+		console.log(req.body);
+		Product.find({category:category.name,subcategory:req.body.subcategory},function(err,products){
+			console.log(products);
+			res.render("products",{products:products});
+		})
+	})
+})
+
+app.get("/coming_soon",function(req,res){
+	res.render("coming_soon");
+})
+
+app.get("/buyer/complaint",function(req,res){
+	res.render("complaint");
+})
+
+app.post("/buyer/complaint",function(req,res){
+	Complaint.create({
+		user:req.body.name,
+		description:req.body.description
+	},function(err,complaint){
+		res.render("thanks");
+	})
+});
+
+app.get("/seller",function(req,res){
+	res.render("sell");
+});
+
+app.get("/seller/sell",function(req,res){
+	Category.find({}).populate("subCategories").exec(function(err,categories){
+		res.render("sellproduct",{categories:categories});
+	})
+	
+});
+
+app.post("/step2",function(req,res){
+	Category.findById(req.body.category,function(err,category){
+		SubCategory.findById(req.body.subcategory).populate("subCategories").exec(function(err,sub){
+			res.render("step2",{sub:sub,category:category});
+		})
+	})
+})
+
+app.post("/step3",function(req,res){
+	SubSubCategory.findById(req.body.subsub).populate("features").exec(function(err,subsub){
+		res.render("step3",{c:req.body.category,s:req.body.subcategory,subsub:subsub});
+	})
+})
+
+app.post("/new",function(req,res){
+	SubSubCategory.findById(req.body._id).populate("features").exec(function(err,subsub){
+		var f=[];
+		for(var i=0;i<subsub.features.length;i++){
+			f.push(subsub.features[i].name);
+		}
+		Product.create({
+		name:req.body.name,
+		category:req.body.category,
+		subcategory:req.body.subcategory,
+		subsubcategory:req.body.subsubcategory,
+		image:req.body.image,
+		price:req.body.price,
+		feature:f,
+		value:req.body.option
+	},function(e,d){
+		res.redirect("/done");
+	});
+	});
+
+})
+
+app.get("/done",function(req,res){
+	res.render("done");
+})
+
+app.get("/seller/request",function(req,res){
+	res.render("requestProduct");
+})
+
+app.post("/seller/request",function(req,res){
+	Request.create({
+		category:req.body.category,
+		subCategory:req.body.subcategory,
+		subSubCategory:req.body.subsubcategory,
+		features:req.body.feature,
+		options:req.body.answer,
+		description:req.body.description,
+		user:req.body.name
+	},function(req,res){
+		res.render("/sellerthanks");
+	})
+})
+
+app.get("/seller/complaint",function(req,res){
+	res.render("sellercomplaints");
+})
+
+app.post("/seller/complaint",function(req,res){
+	Complaint.create({
+		user:req.body.name,
+		description:req.body.description
+	},function(err,complaint){
+		res.render("sellerthanks");
+	})
+});
+
 app.get("/",function(req,res){
 	/*res.render("basic");*/
-	res.redirect("/rootadmin");
+	res.render("basic");
 });
 
 app.get("/payment",function(req,res){
@@ -234,7 +375,7 @@ app.get("/categories",function(req,res){
 
 app.get("/categories/new",function(req,res){
 	res.render("newCategory");
-})
+});
 
 /*app.get("/spareroom/categories",function(req,res){
 	Category.find({},function(err,categories){
@@ -725,7 +866,7 @@ app.get("/requests/:_id/delete",function(req,res){
 app.get("/complaints/:_id/delete",function(req,res){
 	Complaint.findOneAndDelete(req.params._id,function(req,res){});
 	res.redirect("/complaints");
-})
+}) 
 
 app.get("/complaints",function(req,res){
 	Complaint.find({},function(err,complaints){
@@ -740,10 +881,10 @@ app.get("/users",function(req,res){
 });
 
 
-/*app.listen("3000",function(){
-	console.log("Running");
-});*/
-
-app.listen(process.env.PORT,process.env.IP,function(){
+app.listen("3000",function(){
 	console.log("Running");
 });
+
+/*app.listen(process.env.PORT,process.env.IP,function(){
+	console.log("Running");
+});*/

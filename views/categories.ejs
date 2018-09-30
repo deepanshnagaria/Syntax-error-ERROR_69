@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Deepansh's Store</title>
+	<title>WebStore</title> 	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
+	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		body{
-			background-color: #4682B4;
+			/* background-image: url("data:image/jpeg;base64,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"); */
+			/* background-repeat:no-repeat; */
+			background-size:100%; 
+		
 		}
-		h1{
-			padding: auto;
-			text-align: center;
-			color: white;
+		/*h1{
+			margin-top:0px;
+			color: white;ufnhXPDfng4TRlhAh0QfPCaMueDh0QcJpcOaDh0wcJsw5oOHTBwm1w5vmPm6YV802uHL8z5/N0wINmHP8z+bog+eE2vNzfMfN1QITa83L8zdMEbObzueVc8EHb31qL55EgM1YciQBIJOQEpD54EgFSHIkBKsOTkglIqBABVnhycgJSeHByAlWeCVc8gIsEnICLFSJARYcjABYMPAAh4MMIsLBhgInAAEf/Z
 			font-weight: normal;
 			padding-top: 150px;
-			font-size: 75px;
-		}
+			font-size: 50px;
+		}*/
 		/*button{
 			float: left;
 			color: #4682b4;
@@ -23,8 +26,27 @@
 			height: 25px;
 		}*/
 		.yo{
-			text-align: center;
+			text-align: left;
 		}
+		.jumbotron{
+			background-size:cover;
+		}
+
+		.container-fluid{
+			background-color: #a6f3dc;
+			text-align: center;
+			text:#ffffff;
+
+		}
+
+		#buttonid{
+			text-align: right;
+			margin-right: 250px;	
+		}
+
+		
+	
+
 	</style>
 </head>
 <body>
@@ -32,67 +54,76 @@
 
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="/">DEEPANSH'S STORE</a>
+		<a class="navbar-brand" href="/"><img style="height:25px; padding:0; margin:0" src="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico"> WebStore</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item">
 	        <a class="nav-link" href="/subCategories">SubCategories</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/features">Features</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/requests">Requests</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/complaints">Complaints</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/newProduct">New product</a>
 	      </li>
-	      <li class="nav-item active active">
+	      <li class="nav-item">
 	        <a class="nav-link" href="/payment">Commision-Rates</a>
-	      </li>
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/smtp">SMTP details</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">
 	    	
-	    		<li class="nav-item active">
+	    		<li class="nav-item ">
 	      			<a class="nav-link" href="/login">Login</a>
 	    		</li>
     		
-	    		<li class="nav-item active">
+	    		<li class="nav-item ">
 	      			<a class="nav-link" href="/logout">Logout</a>
 	    		</li>
 	    		
     	</ul>
 	  </div>
 	</nav>
-	<h1 >Products (level 1)</h1>
+	<div class="container-fluid">
+	<h1 class="display-4"  >Categories </h1>
+	</div>
+
 	<br>
 	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
-	<div class="yo">
+	<div class="yo" style="margin-left:250px">
 		<%for(var i=1;i<=categories.length;i++){%>
-			<div>
-				<h3>
-					<%=i%>. <%=categories[i-1].name%> <a href="/categories/<%=categories[i-1]._id%>/edit"><button type="button" class="btn btn-dark">Edit</button></a> <a href="/categories/<%=categories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a> 
+			<div class="row">
+			
+			<div class="col">
+				<h3 >
+					<%=i%>. <%=categories[i-1].name%>
 				</h3>
-			</div>
-		<%}%>
+				</div>
+				<div class="col">
+					 <a href="/categories/<%=categories[i-1]._id%>/edit"><button type="button" class="btn btn-primary ">Edit</button></a> <a href="/categories/<%=categories[i-1]._id%>/delete"><button type="button" class="btn btn-danger ">Delete</button></a> 
+					</div>
+		
+		</div> 
 		<br>
-		<div>
-			<a href="/categories/new" class="btn btn-primary" role="button">Create New Category</a>
+		<%}%>
+	</div>
+		<br>
+		<div style="text-align:center">
+			<a href="/categories/new" class="btn btn-success" role="button">Create New Category</a>
 		</div>
 	</div>
 </body>

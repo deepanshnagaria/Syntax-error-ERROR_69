@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Deepansh's Store</title>
+	<title>WebStore</title> 	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		body{
-			background-color: #4682B4;
+			background-color: #ffffff;
 		}
-		h1{
-			padding: auto;
+		
+		.jumbotron{
+			background-size:cover;
+		}
+
+		.container-fluid{
+			background-color: #a6f3dc;
 			text-align: center;
-			color: white;
-			font-weight: normal;
-			padding-top: 150px;
-			font-size: 75px;
+			text:#ffffff;
+
 		}
+
+		#buttonid{
+			text-align: right;
+			padding-right: 250px;	
+		}
+
 		/*button{
 			float: left;
 			color: #4682b4;
@@ -32,67 +41,86 @@
 
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="/">DEEPANSH'S STORE</a>
+	  <a class="navbar-brand" href="/"><img style="height:25px; padding:0; margin:0" src="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico"> WebStore</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/categories">Products <span class="sr-only">(current)</span></a>
+	      <li class="nav-item ">
+	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
 	        <a class="nav-link" href="/subCategories">SubCategories</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/features">Features</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/requests">Requests</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/complaints">Complaints</a>
 	      </li>
-	      <li class="nav-item active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/newProduct">New product</a>
 	      </li>
-	      <li class="nav-item active active">
+	      <li class="nav-item ">
 	        <a class="nav-link" href="/payment">Commision-Rates</a>
-	      </li>
-	      <li class="nav-item active active">
-	        <a class="nav-link" href="/smtp">SMTP details</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">
 	    	
-	    		<li class="nav-item active">
+	    		<li class="nav-item ">
 	      			<a class="nav-link" href="/login">Login</a>
 	    		</li>
     		
-	    		<li class="nav-item active">
+	    		<li class="nav-item ">
 	      			<a class="nav-link" href="/logout">Logout</a>
 	    		</li>
 	    		
     	</ul>
 	  </div>
 	</nav>
-	<h1 >SubCategories (level-2)</h1>
+	<div class="container-fluid">
+		<h1 class="display-4"  >Sub-Categories </h1>
+		</div>
 	<br>
 	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
-	<div class="yo">
+	<!--<div class="yo">
 		<%for(var i=1;i<=subCategories.length;i++){%>
 			<div>
 				<h3>
 					<%=i%>. <%=subCategories[i-1].name%> <a href="/subCategories/<%=subCategories[i-1]._id%>/edit"><button type="button" class="btn btn-dark">Edit</button></a> <a href="/subCategories/<%=subCategories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a> 
 				</h3>
 			</div>
+			<br>
 		<%}%>
-		<br>
-		<div>
-			<a href="/subCategories/new" class="btn btn-primary" role="button">Create New SubCategory</a>
+		<br>*/-->
+
+		<div class="yo" style="margin-left:250px">
+				<%for(var i=1;i<=subCategories.length;i++){%>
+					<div class="row">
+					
+					<div class="col" style="text-align: left">
+						<h3 >
+								<%=i%>. <%=subCategories[i-1].name%>
+						</h3>
+						</div>
+						<div class="col">
+								<a href="/subCategories/<%=subCategories[i-1]._id%>/edit"><button type="button" class="btn btn-primary">Edit</button></a> <a href="/subCategories/<%=subCategories[i-1]._id%>/delete"><button type="button" class="btn btn-danger">Delete</button></a>  
+							</div>
+				
+				</div> 
+				<br>
+				<%}%>
+			</div>
+
+		<div style="text-align: center">
+			<a href="/subCategories/new" class="btn btn-success" role="button">Create New SubCategory</a>
 		</div>
 	</div>
 </body>

@@ -6,54 +6,41 @@
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
-		form{
-			padding: 10px;
-			padding-top: 50px;
-		}
 		body{
-			color: black;
 			background-color: #ffffff;
 		}
-		small{
-			color: white;
-			text-decoration: underline;
+		h1{
+			padding: auto;
+			text-align: center;
+			color: #000000;
+			font-weight: normal;
+			padding-top: 150px;
+			font-size: 75px;
+		}
+		/*button{
+			float: left;
+			color: #4682b4;
+			background-color: white;
+			height: 25px;
+		}*/
+		.yo{
+			text-align: center;
 		}
 	</style>
 </head>
 <body>
-
-
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="/"><img style="height:25px; padding:0; margin:0" src="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico"> WebStore</a>
+		<a class="navbar-brand" href="/"><img style="height:25px; padding:0; margin:0" src="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico"> WebStore</a>	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
-	      <li class="nav-item  ">
-	        <a class="nav-link" href="/categories">Categories <span class="sr-only">(current)</span></a>
+	      <li class="nav-item ">
+	        <a class="nav-link" href="/buyer/buy">Buy stuff<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/subCategories">SubCategories</a>
-	      </li>
-	      <li class="nav-item ">
-	        <a class="nav-link" href="/subSubCategories">SubSubCategories</a>
-	      </li>
-	      <li class="nav-item ">
-	        <a class="nav-link" href="/features">Features</a>
-	      </li>
-	      <li class="nav-item ">
-	        <a class="nav-link" href="/requests">Requests</a>
-	      </li>
-	      <li class="nav-item ">
-	        <a class="nav-link" href="/complaints">Complaints</a>
-	      </li>
-	      <li class="nav-item ">
-	        <a class="nav-link" href="/newProduct">New product</a>
-	      </li>
-	      <li class="nav-item  ">
-	        <a class="nav-link" href="/payment">Commision-Rates</a>
+	        <a class="nav-link" href="/buyer/complaint">Report problem</a>
 	      </li>
 	    </ul>
 	    <ul class="navbar-nav ml-auto">
@@ -69,14 +56,19 @@
     	</ul>
 	  </div>
 	</nav>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
+	<br>
+	<br>
 	<div>
 		<div class="container">
-			<form action="/newSubCategory" method="POST">
-			  <legend>CREATE NEW SUB-CATEGORY</legend>
+			<form action="/buyer/complaint" method="POST">
+			  <legend>REPORT A PROBLEM</legend>
 			  <div class="form-group">
-			    <label for="subCategory">Name</label>
-			    <input type="text" class="form-control" id="subCategory" aria-describedby="emailHelp" placeholder="Category" name="subCategory" >
+			    <label for="category">Username:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Name" name="name" >
+			  </div>
+			  <div class="form-group">
+			    <label for="category">Description:</label>
+			    <input type="text" class="form-control" id="category" aria-describedby="emailHelp" placeholder="Description" name="description" >
 			  </div>
 			  <br>
 			  <button type="submit" class="btn btn-primary">Proceed</button>
@@ -85,4 +77,3 @@
 	</div>
 </body>
 </html>
-

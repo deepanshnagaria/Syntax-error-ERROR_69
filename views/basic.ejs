@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Deepansh's Store</title>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title> WebStore</title>
+	<link rel="shortcut icon" href="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico">
+	<!-- <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		body{
-			background-color: #4682B4;
+			background-color: #ffffff;
 		}
 		h1{
 			padding: auto;
 			text-align: center;
-			color: white;
+			color: #000000;
 			font-weight: normal;
 			padding-top: 150px;
 			font-size: 75px;
@@ -25,8 +30,11 @@
 		button{
 			margin-left: 5px;
 		}
-		.yo{
+		.row{
 			text-align: center;
+		}
+		h3{
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -35,38 +43,129 @@
 
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="/">DEEPANSH'S STORE</a>
+	  <a class="navbar-brand" href="/"><img style="height:25px; padding:0; margin:0" src="http://www.iconarchive.com/download/i87056/graphicloads/colorful-long-shadow/Cart.ico"> WebStore</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active active">
-	        <a class="nav-link" href="/spareroom">Spare Room <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="/rootadmin">Root admin <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item active">
-	        <a class="nav-link" href="/ratedpeople">Rated People</a>
+	        <a class="nav-link" href="/buyer">Customer</a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="/seller">Seller</a>
 	      </li>
 	    </ul>
-	    <ul class="navbar-nav ml-auto">
-	    	
-	    		<li class="nav-item active">
-	      			<a class="nav-link" href="/login">Login</a>
-	    		</li>
-    		
-	    		<li class="nav-item active">
-	      			<a class="nav-link" href="/logout">Logout</a>
-	    		</li>
-	    		
-    	</ul>
+	    <div style="margin-left: 800px">
+	    <div class="btn-group">
+  <button type="button" class="btn btn-dark dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Login
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="/buyer">Login</a>
+    <a class="dropdown-item" href="/seller">Login as Seller</a>
+    <a class="dropdown-item" href="/rootadmin">Admin Login</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Register</a>
+  </div>
+</div>
+</div>
 	  </div>
 	</nav>
-	<h1 >Welcome to the Deepansh's Store</h1>
-	<br>
-	<!-- <a class="btn btn-primary" href="/new_blog" role="button">Create new blog</a> -->
-	<div class="yo"><a href="/spareroom"><button class="btn">Spare Room</button></a>
+
+	<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://rukminim1.flixcart.com/flap/2500/2500/image/457e97.jpg?q=80" alt="Los Angeles" width="1370" height="300">
+      <div class="carousel-caption">
+        <h3>Laptops</h3>
+              </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="https://martjackstorage.azureedge.net/in-resources/8fda3511-a61f-4c26-a4a0-f2bd37049878/Images/userimages/Anniversary%20Combo%20Offer%20Banner.jpg" alt="Chicago" width="1370" height="300">
+      <div class="carousel-caption">
+        <h3>Smartphones</h3>
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.imgur.com/Qzixue8.jpg" alt="New York" width="1370" height="300">
+      <div class="carousel-caption">
+        <h3>Headphones</h3>
+      </div>   
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+	<div class="row">
+		<div class="col">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb0Z_F1nC1Au6eFYpMjE7tX0YADZweTfLmaCxPAz3znZZup6Qp" alt="laptop">
+		</div>
+		<div class="col">
+			<h3>Brand New Offers</h3>
+			<p>
+				Get Exciting discounts and cashbacks on verified products. Offers for limited time period, HURRY UP !
+			</p>
+		</div>
 	</div>
 	<br>
-	<div class="yo"><a href="/ratedpeople"><button class="btn">Rated People</button></a></div>
+	<br>
+	<hr>
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="col">
+			<h3>24X7 Customer Support</h3>
+			<p>
+				Get 24X7 technical suport on all stuff. All products are verified and eligible for warranty.
+			</p>
+		</div>
+		<div class="col">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCsC94NquvU_etnNnfukMAptzYzjKpsUbiSyMnECZbrtAlGH5Gog" alt="laptop">
+		</div>
+	</div>
+
+	<br>
+<br>
+<hr>
+<br>
+<br>
+
+	<div class="row">
+		<div class="col">
+			<img src="https://www.brandcrowd.com/maker/asset/logo/1406cec7-7f83-4d03-ab57-db63ddd288e5/image/logo?text=Want%20to%20Sell%20%3F&v=2" alt="laptop">
+		</div>
+		<div class="col">
+			<h3>Your Online Store</h3>
+			<p>
+				Expand your business by selling products online
+			</p>
+		</div>
+	</div>
+	
+	
 </body>
+
+
+
 </html>
+
